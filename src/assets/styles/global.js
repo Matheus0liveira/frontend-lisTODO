@@ -12,10 +12,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
   }
   body,html{
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100vw;
+    justify-content: center; */
+    width: 100%;
     height: 90vh;
     font-size: 4rem;
     background: #FDFFF7;
@@ -23,6 +23,12 @@ export const GlobalStyle = createGlobalStyle`
 
   a{
     text-decoration: none;
+  }
+  h4{
+    font-size: 3rem;
+  }
+  p{
+    font-size: 2rem;
   }
 
 `

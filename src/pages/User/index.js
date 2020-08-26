@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Header, Wrapper, WrappInfo, Imagem, Title, SubmitButton, Main } from './styles';
-
 import { FiLogOut, FiClock, FiBook, FiChevronsUp, FiChevronsDown } from 'react-icons/fi';
+
+
+import Card from '../../components/Card';
 
 function User() {
   function handleSubmit(event) {
@@ -50,7 +52,9 @@ function User() {
         </Wrapper>
       </Header>
       <Main>
-        wdwd
+        <Card />
+        <Card />
+        <Card />
       </Main>
     </>
   );

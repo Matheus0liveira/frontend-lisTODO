@@ -2,24 +2,22 @@ import styled from 'styled-components';
 
 
 export const Header = styled.header`
-  position:absolute;
-  top: 0;
-  left: 0;
+
   display: flex;
   background: #DADAE7;
-  width: 100vw;
   align-items: flex-start;
   flex-direction: row;
   justify-content: space-between;
   padding: 2.5rem 0;
+  margin-bottom: 5rem;
 
 
 
 `;
 export const Wrapper = styled.div`
 
-  display: flex;
-  margin: 0 10rem;
+    display: flex;
+    margin: 0 10rem;
 
   a svg{
 
@@ -96,6 +94,11 @@ export const SubmitButton = styled.button`
 
 
 export const Main = styled.main`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 
 
 
