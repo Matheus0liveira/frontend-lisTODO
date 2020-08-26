@@ -12,9 +12,9 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
   }
   body,html{
-    /* display: flex;
+    display: flex;
     align-items: center;
-    justify-content: center; */
+    justify-content: center;
     width: 100%;
     height: 90vh;
     font-size: 4rem;

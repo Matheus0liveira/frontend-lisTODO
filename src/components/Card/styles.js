@@ -10,6 +10,8 @@ export const Wrapper = styled.article`
   margin: 2rem;
 
 
+
+
   header{
     display: flex;
     justify-content: space-between;
@@ -47,6 +49,11 @@ export const Wrapper = styled.article`
         }
       }
     }
+
+     @media (max-width: 700px){
+     width: 100%;
+    }
+
 `;
 export const Title = styled.h4`
 
