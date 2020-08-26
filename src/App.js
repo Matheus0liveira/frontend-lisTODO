@@ -7,9 +7,9 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Container>
-        <Routes />
-      </Container>
+
+      <Routes />
+
     </>
   );
 }
