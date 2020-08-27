@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 import {
 
   Header,
@@ -25,10 +26,17 @@ import Modal from '../../components/Modal';
 
 function User() {
   function handleSubmit(event) {
-    event.preventDefault();
+    return event.preventDefault();
 
-    alert('Adicionado');
+
   };
+
+  const options = {
+    position: 'bottom center',
+    timeout: 5000,
+    offset: '30px',
+    transition: 'scale'
+  }
 
 
   return (
@@ -81,6 +89,10 @@ function User() {
 
       </Main>
       <Modal handleSubmit={handleSubmit} />
+
+
+
+
 
     </>
   );

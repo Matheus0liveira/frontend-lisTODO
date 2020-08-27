@@ -53,7 +53,7 @@ function Modal({ handleSubmit }) {
           />
         </WrapperInput>
 
-        <Button type='submit'>
+        <Button type='submit' >
           ADICIONAR
             </Button>
 
