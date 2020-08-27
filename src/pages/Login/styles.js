@@ -1,6 +1,20 @@
 import styled from 'styled-components';
 
 
+
+
+
+export const UserLogin = styled.div`
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    font-size: 4rem;
+    background: #FDFFF7;
+
+`;
 export const Form = styled.form`
   width: 25vw;
 

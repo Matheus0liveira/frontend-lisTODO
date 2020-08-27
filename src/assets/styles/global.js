@@ -12,11 +12,11 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
   }
   body,html{
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     font-size: 4rem;
     background: #FDFFF7;
   }
@@ -27,9 +27,10 @@ export const GlobalStyle = createGlobalStyle`
   h4{
     font-size: 3rem;
   }
-  p{
+  p, label{
     font-size: 2rem;
   }
+
 
 `
 

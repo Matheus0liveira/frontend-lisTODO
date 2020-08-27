@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import {
+
   Header,
   Wrapper,
   WrappInfo,
@@ -12,8 +13,11 @@ import {
   Modal,
   Close,
   WrapperInput,
-  Button
+  Button,
+  Form,
 } from './styles';
+
+
 import {
   FiLogOut,
   FiClock,
@@ -34,6 +38,7 @@ function User() {
 
     alert('Adicionado');
   };
+
 
   return (
     <>
@@ -59,56 +64,67 @@ function User() {
 
             </div>
 
-
-
-            <SubmitButton href="#openModel" type='submit'> ADICIONAR</SubmitButton>
-
+            <SubmitButton href="#openModel" type='submit'> CRIAR</SubmitButton>
 
           </WrappInfo>
 
         </Wrapper>
 
         <Wrapper right='true'>
+
           <Link to='/login'>
             <FiLogOut />
           </Link>
+
         </Wrapper>
+
       </Header>
+
       <Main>
+
         <Card />
         <Card />
         <Card />
         <Card />
+        <Card />
+
       </Main>
 
 
+      <Modal id="openModel" className="modal">
+        <Close href="#exitModel" title="Fechar" className="exitModel"><FiX /></Close>
 
-      <Modal id="openModel" class="modal">
-        <Close href="#exitModel" title="Fechar" class="exitModel"><FiX /> </Close>
-        <WrapperInput>
-          <FiEdit />
-          <Input
-            type={'text'}
-            placeholder={'Digite seu apelido'}
-          />
-        </WrapperInput>
-        <WrapperInput>
-          <FiAlignJustify />
-          <Input
-            type={'text'}
-            placeholder={'Descrição'}
-          />
-        </WrapperInput>
-        <WrapperInput>
-          <FiAlertTriangle />
-          <select name="" id="">
-            <option value="sdw">wddwd</option>
-          </select>
-        </WrapperInput>
-        <Button type='submit'>
-          ADICIONAR
+        <Form onSubmit={handleSubmit}>
+
+          <WrapperInput>
+            <FiEdit />
+            <Input
+              type={'text'}
+              placeholder={'Título'}
+            />
+          </WrapperInput>
+
+          <WrapperInput>
+            <FiAlignJustify />
+            <Input
+              type={'text'}
+              placeholder={'Descrição'}
+            />
+          </WrapperInput>
+
+          <WrapperInput>
+            <FiAlertTriangle />
+            <Input
+              type={'text'}
+              placeholder={'Digite seu apelido'}
+            />
+          </WrapperInput>
+
+          <Button type='submit'>
+            ADICIONAR
             </Button>
 
+        </Form>
       </Modal>
     </>
   );

@@ -2,10 +2,6 @@ import styled from 'styled-components';
 
 
 export const Header = styled.header`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
 
   display: flex;
   background: #DADAE7;
@@ -13,15 +9,12 @@ export const Header = styled.header`
   flex-direction: row;
   justify-content: space-between;
   padding: 2.5rem 0;
-  margin-bottom: 5rem;
 
-   @media (max-width: 700px){
+  @media (max-width: 700px){
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-
-
 
 `;
 export const Wrapper = styled.div`
@@ -114,7 +107,10 @@ export const WrappInfo = styled.div`
 `;
 export const SubmitButton = styled.a`
 
-  width: 100%;
+  display: flex;
+  justify-content:center;
+  width: 60%;
+  text-align: center;
   padding: 2rem 6rem;
   background: #52527A;
   border: 0;
@@ -134,43 +130,40 @@ export const SubmitButton = styled.a`
      width: 50%;
      margin: 0 auto;
      justify-self: center;
-     /* align-items: center; */
     }
 
 `;
 
 
 export const Main = styled.main`
-  margin-top: 40rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 
-   @media (max-width: 700px){
-     margin-top: 120rem;
+   @media (max-width: 930px){
     }
 
 
 `;
 export const Modal = styled.div`
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 80%;
-  min-width: 50rem;
+  min-width: 30rem;
+  max-width: 50rem;
 
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  margin: 10rem auto;
+  margin:  10rem auto;
   font-family: Arial, Helvetica, sans-serif;
-  background: #52527aaf ;
+  background:#FDFFF7 ;
+  border: 0.2rem solid #52527A;
   z-index: 99999;
   opacity:0;
   -webkit-transition: opacity 400ms ease-in;
@@ -194,6 +187,16 @@ export const Modal = styled.div`
 
 `;
 
+export const Form = styled.form`
+
+  width: 50%;
+  min-width: 25rem;
+  max-width: 50rem;
+  margin:auto;
+
+
+`;
+
 
 
 export const Close = styled.a`
@@ -207,36 +210,48 @@ export const Close = styled.a`
   margin-top: 0.5rem;
   color:#DB504A;
   font-size: 4rem;
+
+  svg{
+
+    transition: transform .5s cubic-bezier(0.75,-0.87, 0, 1.21);
+  }
+
+  svg:hover{
+    transform: rotate(180deg);
+  }
 `;
 export const WrapperInput = styled.div`
 
-  width: 10px;
   display: flex;
+
   align-items: center;
+
+  margin: 2rem auto;
+  padding: 0.2rem 1rem ;
   background: #DADAE7;
+
   svg{
     width: 2rem;
     color: #52527A;
   }
 
-
-
-
 `;
 export const Button = styled.button`
 
-  width: 46rem;
+  width: 100%;
   padding: 1.4rem 0.5rem;
   font-size: 1.4rem;
   background: #202030 ;
   border: 0;
   color: #DADAE7;
   font-weight: bold;
-  transition: all .2s;
+  transition: all .4s;
   cursor: pointer;
 
   &:hover{
-    background: #52527A;
-    color:#DADAE7 ;
+    background: #DADAE7;
+    color:#202030;
   }
 `;
+
+

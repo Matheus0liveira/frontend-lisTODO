@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../../components/Input';
 
-import { Form, Wrapper, Title, Line, Buttons, Button } from './styles'
+import { UserLogin, Form, Wrapper, Title, Line, Buttons, Button } from './styles'
 
 import { FiUser, FiLock } from 'react-icons/fi'
 
@@ -18,47 +18,45 @@ function Login() {
 
 
   return (
-    <>
-      <Title>Bem vindo <br /> de volta!</Title>
-      <Line />
+    <UserLogin>
+      <div>
+        <Title>Bem vindo <br /> de volta!</Title>
+        <Line />
 
-      <Form onSubmit={handleSubmit}>
-        <Wrapper>
-          <FiUser />
-          <Input
-            setInputValue={setInputText}
-            type={'text'}
-            value={inputText}
-            placeholder={'Digite seu apelido'}
-          />
-        </Wrapper>
-        <Wrapper>
-          <FiLock />
-          <Input
-            setInputValue={setInputPassword}
-            type={'password'}
-            value={inputPassword}
-            placeholder={'Sua senha'}
-          />
-        </Wrapper>
-        <Buttons >
-          <Link to='logon' logon='true'>
-            <Button >
-              CADASTRAR
+        <Form onSubmit={handleSubmit}>
+          <Wrapper>
+            <FiUser />
+            <Input
+              setInputValue={setInputText}
+              type={'text'}
+              value={inputText}
+              placeholder={'Digite seu apelido'}
+            />
+          </Wrapper>
+          <Wrapper>
+            <FiLock />
+            <Input
+              setInputValue={setInputPassword}
+              type={'password'}
+              value={inputPassword}
+              placeholder={'Sua senha'}
+            />
+          </Wrapper>
+          <Buttons >
+            <Link to='logon' logon='true'>
+              <Button >
+                CADASTRAR
             </Button>
-          </Link>
+            </Link>
 
-
-
-          <Button type='submit'>
-            ENTRAR
+            <Button type='submit'>
+              ENTRAR
             </Button>
 
-
-
-        </Buttons>
-      </Form >
-    </>
+          </Buttons>
+        </Form >
+      </div>
+    </UserLogin>
   );
 }
 
