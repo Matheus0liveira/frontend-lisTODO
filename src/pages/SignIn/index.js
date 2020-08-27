@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import Input from '../../components/Input';
 
-import { UserLogin, Form, Wrapper, Title, Line, Buttons, Button } from './styles'
+import { UserSignIn, Form, Wrapper, Title, Line, Buttons, Button } from './styles'
 
 import { FiUser, FiLock, FiEye, FiEyeOff } from 'react-icons/fi'
 
 
-function Login() {
-  const [inputText, setInputText] = useState('');
-  const [inputPassword, setInputPassword] = useState('');
+function SignIn() {
+  const [signInValues, setSignInValues] = useState(
+    {
+      text: '',
+      password: ''
+    }
+  );
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -17,38 +22,55 @@ function Login() {
     event.preventDefault();
     alert('Logado')
   };
+  function onKeyPress(event) {
+    if (event.key === 'Enter') {
+      return handleSubmit;
+    }
+  };
+
 
 
   return (
-    <UserLogin>
+    <UserSignIn>
       <div>
         <Title>Bem vindo <br /> de volta!</Title>
         <Line />
 
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} onKeyPress={onKeyPress}>
+
+
           <Wrapper>
             <FiUser />
+
             <Input
-              setInputValue={setInputText}
               type={'text'}
-              value={inputText}
               placeholder={'Digite seu apelido'}
+              value={signInValues.text}
+              setInputValue={(value) => setSignInValues({ ...signInValues, text: value })}
             />
           </Wrapper>
+
+
           <Wrapper>
             <FiLock />
+
             <Input
-              setInputValue={setInputPassword}
               type={!showPassword ? 'password' : 'text'}
-              value={inputPassword}
               placeholder={'Sua senha'}
+              value={signInValues.password}
+              setInputValue={(value) => setSignInValues({ ...signInValues, password: value })}
+
             />
+            {console.log(signInValues)}
+
             <span onClick={() => setShowPassword(!showPassword)}>
               {!showPassword ? <FiEye /> : <FiEyeOff />}
             </span>
           </Wrapper>
+
+
           <Buttons >
-            <Link to='logon' logon='true'>
+            <Link to='signup' logon='true'>
               <Button >
                 CADASTRAR
             </Button>
@@ -61,8 +83,8 @@ function Login() {
           </Buttons>
         </Form >
       </div>
-    </UserLogin>
+    </UserSignIn>
   );
 }
 
-export default Login;
+export default SignIn;

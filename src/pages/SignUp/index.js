@@ -7,12 +7,19 @@ import { UserLogon, Form, Wrapper, Title, Line, Buttons, Button } from './styles
 import { FiEdit3, FiUser, FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi'
 
 
-function Login() {
-  const [inputName, setInputName] = useState('');
-  const [inputNickName, setInputNickName] = useState('');
-  const [inputEmail, setInputEmail] = useState('');
-  const [inputPassword, setInputPassword] = useState('');
+function SignUp() {
+
+  const [signInValues, setSignInValues] = useState(
+    {
+      name: '',
+      nickName: '',
+      email: '',
+      password: ''
+    }
+  );
+
   const [showPassword, setShowPassword] = useState(false);
+
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -27,49 +34,59 @@ function Login() {
         <Line />
 
         <Form onSubmit={handleSubmit}>
+
+
           <Wrapper>
             <FiEdit3 />
             <Input
-              setInputValue={setInputName}
+              setInputValue={(value) => setSignInValues({ ...signInValues, name: value })}
               type={'text'}
-              value={inputName}
+              value={signInValues.name}
               placeholder={'Nome Completo'}
             />
           </Wrapper>
+
+
           <Wrapper>
             <FiUser />
             <Input
-              setInputValue={setInputNickName}
+              setInputValue={(value) => setSignInValues({ ...signInValues, nickName: value })}
               type={'text'}
-              value={inputNickName}
+              value={signInValues.nickName}
               placeholder={'Seu apelido'}
             />
           </Wrapper>
+
+
           <Wrapper>
             <FiMail />
             <Input
-              setInputValue={setInputEmail}
+              setInputValue={(value) => setSignInValues({ ...signInValues, email: value })}
               type={'email'}
-              value={inputEmail}
+              value={signInValues.email}
               placeholder={'E-mail'}
             />
           </Wrapper>
+
+
           <Wrapper>
             <FiLock />
             <Input
-              setInputValue={setInputPassword}
+              setInputValue={(value) => setSignInValues({ ...signInValues, password: value })}
               type={!showPassword ? 'password' : 'text'}
-              value={inputPassword}
+              value={signInValues.password}
               placeholder={'Sua melhor senha'}
             />
+
 
             <span onClick={() => setShowPassword(!showPassword)}>
               {!showPassword ? <FiEye /> : <FiEyeOff />}
             </span>
           </Wrapper>
 
+
           <Buttons>
-            <Link to='login'>
+            <Link to='signin'>
               <Button >
                 LOGIN
             </Button>
@@ -92,4 +109,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;
