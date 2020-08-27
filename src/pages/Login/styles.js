@@ -41,6 +41,13 @@ export const Wrapper = styled.div`
   margin: 2rem 0;
   padding: 0.2rem 1rem ;
   background: #DADAE7;
+
+  span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   svg{
     width: 2rem;
     color: #52527A;

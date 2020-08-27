@@ -4,7 +4,7 @@ import Input from '../../components/Input';
 
 import { UserLogon, Form, Wrapper, Title, Line, Buttons, Button } from './styles'
 
-import { FiEdit3, FiUser, FiMail, FiLock } from 'react-icons/fi'
+import { FiEdit3, FiUser, FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi'
 
 
 function Login() {
@@ -12,6 +12,7 @@ function Login() {
   const [inputNickName, setInputNickName] = useState('');
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -57,10 +58,14 @@ function Login() {
             <FiLock />
             <Input
               setInputValue={setInputPassword}
-              type={'password'}
+              type={!showPassword ? 'password' : 'text'}
               value={inputPassword}
               placeholder={'Sua melhor senha'}
             />
+
+            <span onClick={() => setShowPassword(!showPassword)}>
+              {!showPassword ? <FiEye /> : <FiEyeOff />}
+            </span>
           </Wrapper>
 
           <Buttons>

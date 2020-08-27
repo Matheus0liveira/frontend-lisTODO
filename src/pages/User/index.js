@@ -6,31 +6,22 @@ import {
   Header,
   Wrapper,
   WrappInfo,
-  Imagem,
+  Image,
   Title,
   SubmitButton,
   Main,
-  Modal,
-  Close,
-  WrapperInput,
-  Button,
-  Form,
 } from './styles';
 
 
 import {
   FiLogOut,
   FiClock,
-  FiBook,
-  FiX,
-  FiEdit,
-  FiAlignJustify,
-  FiAlertTriangle
+  FiBook
 } from 'react-icons/fi';
 
 
 import Card from '../../components/Card';
-import Input from '../../components/Input';
+import Modal from '../../components/Modal';
 
 function User() {
   function handleSubmit(event) {
@@ -45,9 +36,9 @@ function User() {
       <Header>
 
         <Wrapper left='true'>
-          <Imagem>
+          <Image>
             <img src="https://avatars2.githubusercontent.com/u/58826355?s=460&u=8c805f2a4e708a2f3ff9c6095373bcb622f1dda2&v=4" alt="" />
-          </Imagem>
+          </Image>
           <WrappInfo>
             <Title>Matheus Oliveira</Title>
             <div>
@@ -89,43 +80,8 @@ function User() {
         <Card />
 
       </Main>
+      <Modal handleSubmit={handleSubmit} />
 
-
-      <Modal id="openModel" className="modal">
-        <Close href="#exitModel" title="Fechar" className="exitModel"><FiX /></Close>
-
-        <Form onSubmit={handleSubmit}>
-
-          <WrapperInput>
-            <FiEdit />
-            <Input
-              type={'text'}
-              placeholder={'Título'}
-            />
-          </WrapperInput>
-
-          <WrapperInput>
-            <FiAlignJustify />
-            <Input
-              type={'text'}
-              placeholder={'Descrição'}
-            />
-          </WrapperInput>
-
-          <WrapperInput>
-            <FiAlertTriangle />
-            <Input
-              type={'text'}
-              placeholder={'Digite seu apelido'}
-            />
-          </WrapperInput>
-
-          <Button type='submit'>
-            ADICIONAR
-            </Button>
-
-        </Form>
-      </Modal>
     </>
   );
 };
