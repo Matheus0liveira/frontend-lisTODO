@@ -13,14 +13,13 @@ import {
 import {
   FiX,
   FiEdit,
-  FiAlignJustify,
-  FiAlertTriangle
+  FiAlignJustify
 } from 'react-icons/fi';
 
 
 import Input from '../Input';
 
-function Modal({ handleSubmit }) {
+function Modal({ handleSubmit, task, setTask }) {
 
   return (
 
@@ -34,6 +33,9 @@ function Modal({ handleSubmit }) {
           <Input
             type={'text'}
             placeholder={'Título'}
+            value={task.title}
+            setInputValue={(value) => setTask({ ...task, title: value })}
+
           />
         </WrapperInput>
 
@@ -42,16 +44,14 @@ function Modal({ handleSubmit }) {
           <Input
             type={'text'}
             placeholder={'Descrição'}
+            value={task.description}
+            setInputValue={(value) => setTask({ ...task, description: value })}
+
+
           />
         </WrapperInput>
 
-        <WrapperInput>
-          <FiAlertTriangle />
-          <Input
-            type={'text'}
-            placeholder={'Digite seu apelido'}
-          />
-        </WrapperInput>
+
 
         <Button type='submit' >
           ADICIONAR

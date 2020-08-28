@@ -61,7 +61,7 @@ function SignIn() {
               setInputValue={(value) => setSignInValues({ ...signInValues, password: value })}
 
             />
-            {console.log(signInValues)}
+
 
             <span onClick={() => setShowPassword(!showPassword)}>
               {!showPassword ? <FiEye /> : <FiEyeOff />}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -25,18 +25,17 @@ import Card from '../../components/Card';
 import Modal from '../../components/Modal';
 
 function User() {
+  const [task, setTask] = useState(
+    {
+      title: '',
+      description: ''
+    }
+  );
+
+
   function handleSubmit(event) {
     return event.preventDefault();
-
-
   };
-
-  const options = {
-    position: 'bottom center',
-    timeout: 5000,
-    offset: '30px',
-    transition: 'scale'
-  }
 
 
   return (
@@ -71,7 +70,7 @@ function User() {
 
         <Wrapper right='true'>
 
-          <Link to='/login'>
+          <Link to='/signin'>
             <FiLogOut />
           </Link>
 
@@ -88,7 +87,11 @@ function User() {
         <Card />
 
       </Main>
-      <Modal handleSubmit={handleSubmit} />
+      <Modal
+        handleSubmit={handleSubmit}
+        task={task}
+        setTask={setTask}
+      />
 
 
 
