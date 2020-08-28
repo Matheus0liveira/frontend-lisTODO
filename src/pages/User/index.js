@@ -69,6 +69,30 @@ function User() {
 
   }, [userValues]);
 
+
+
+
+  async function handleDeleteTask(id) {
+
+
+    const newArraytasks = arrayTasks.filter(task => id !== task.id);
+
+    setArrayTasks(newArraytasks);
+
+
+    const USER_TOKEN = userValues.token;
+    const auth = 'Bearer '.concat(USER_TOKEN);
+
+    await api.delete(`/users/${userValues.user.id}/tasks/${id}`, {
+
+      headers: {
+        Authorization: auth,
+      }
+    })
+
+
+  };
+
   return (
     <>
       <Header>
@@ -110,13 +134,16 @@ function User() {
       </Header>
 
       <Main>
+
         {arrayTasks.map(task => (
 
           <Card
             key={task.id}
+            id={task.id}
             title={task.title}
             description={task.description}
             createdAt={task.createdAt}
+            deleteTask={handleDeleteTask}
 
           />
 

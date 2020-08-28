@@ -8,7 +8,7 @@ export const Wrapper = styled.article`
   width: 30%;
   background: #DADAE7;
   margin: 2rem;
-
+  transition: all 1s;
 
 
 
