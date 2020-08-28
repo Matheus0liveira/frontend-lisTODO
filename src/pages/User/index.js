@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
-
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import useUser from '../../utils/useUser';
 import {
 
   Header,
@@ -31,11 +30,20 @@ function User() {
       description: ''
     }
   );
+  const { userValues, setUserValues } = useUser();
+  const history = useHistory();
 
 
   function handleSubmit(event) {
     return event.preventDefault();
   };
+
+  function handleMoveToSigninPage() {
+    setUserValues({});
+    sessionStorage.clear();
+    history.push('/signin');
+
+  }
 
 
   return (
@@ -47,7 +55,7 @@ function User() {
             <img src="https://avatars2.githubusercontent.com/u/58826355?s=460&u=8c805f2a4e708a2f3ff9c6095373bcb622f1dda2&v=4" alt="" />
           </Image>
           <WrappInfo>
-            <Title>Matheus Oliveira</Title>
+            <Title>{userValues.User.name}</Title>
             <div>
 
               <div>
@@ -70,9 +78,9 @@ function User() {
 
         <Wrapper right='true'>
 
-          <Link to='/signin'>
+          <a onClick={handleMoveToSigninPage}>
             <FiLogOut />
-          </Link>
+          </a>
 
         </Wrapper>
 

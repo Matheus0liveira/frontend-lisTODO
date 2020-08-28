@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+
 import api from '../../services/api';
-
 import Input from '../../components/Input';
+import useUser from '../../utils/useUser';
 
-import { UserSignIn, Form, Wrapper, Title, Line, Buttons, Button, MessageError } from './styles';
 
-import { FiUser, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
+import {
+  UserSignIn,
+  Form,
+  Wrapper,
+  Title,
+  Line,
+  Buttons,
+  Button,
+  MessageError
+} from './styles';
+
+import {
+  FiUser,
+  FiLock,
+  FiEye,
+  FiEyeOff
+} from 'react-icons/fi';
 
 
 function SignIn() {
@@ -20,23 +36,28 @@ function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [erroSignIn, setErroSignIn] = useState(false);
 
+  const { userValues, setUserValues } = useUser();
   const history = useHistory();
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(erroSignIn);
 
     const { text, password } = signInValues;
+
     try {
 
-      await api.post('/users/signin',
+      const user = await api.post('/users/signin',
         {
           nick_name: text,
           password
         }
       );
+      setUserValues(user.data);
 
-      return history.push('/user');
+      if (user.data.token) {
+
+        return history.push('/user');
+      }
 
     } catch (e) {
       if (!erroSignIn) setErroSignIn(!erroSignIn);
