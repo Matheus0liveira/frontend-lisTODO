@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../../components/Input';
 
+import api from '../../services/api';
+
 import { UserLogon, Form, Wrapper, Title, Line, Buttons, Button } from './styles'
 
 import { FiEdit3, FiUser, FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi'
@@ -12,7 +14,7 @@ function SignUp() {
   const [signInValues, setSignInValues] = useState(
     {
       name: '',
-      nickName: '',
+      nick_name: '',
       email: '',
       password: ''
     }
@@ -21,9 +23,10 @@ function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
 
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    alert('HAHA')
+
+
   };
 
 
@@ -50,9 +53,9 @@ function SignUp() {
           <Wrapper>
             <FiUser />
             <Input
-              setInputValue={(value) => setSignInValues({ ...signInValues, nickName: value })}
+              setInputValue={(value) => setSignInValues({ ...signInValues, nick_name: value })}
               type={'text'}
-              value={signInValues.nickName}
+              value={signInValues.nick_name}
               placeholder={'Seu apelido'}
             />
           </Wrapper>
