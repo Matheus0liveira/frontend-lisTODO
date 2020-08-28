@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import api from '../../services/api';
 
 import Input from '../../components/Input';
 
-import { UserSignIn, Form, Wrapper, Title, Line, Buttons, Button } from './styles'
+import { UserSignIn, Form, Wrapper, Title, Line, Buttons, Button, MessageError } from './styles';
 
-import { FiUser, FiLock, FiEye, FiEyeOff } from 'react-icons/fi'
+import { FiUser, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 
 
 function SignIn() {
@@ -17,15 +18,31 @@ function SignIn() {
   );
 
   const [showPassword, setShowPassword] = useState(false);
+  const [erroSignIn, setErroSignIn] = useState(false);
 
-  function handleSubmit(event) {
+  const history = useHistory();
+
+  async function handleSubmit(event) {
     event.preventDefault();
-    alert('Logado')
-  };
-  function onKeyPress(event) {
-    if (event.key === 'Enter') {
-      return handleSubmit;
-    }
+    console.log(erroSignIn);
+
+    const { text, password } = signInValues;
+    try {
+
+      await api.post('/users/signin',
+        {
+          nick_name: text,
+          password
+        }
+      );
+
+      return history.push('/user');
+
+    } catch (e) {
+      if (!erroSignIn) setErroSignIn(!erroSignIn);
+
+    };
+
   };
 
 
@@ -36,12 +53,11 @@ function SignIn() {
         <Title>Bem vindo <br /> de volta!</Title>
         <Line />
 
-        <Form onSubmit={handleSubmit} onKeyPress={onKeyPress}>
+        <Form onSubmit={handleSubmit} >
 
 
           <Wrapper>
             <FiUser />
-
             <Input
               type={'text'}
               placeholder={'Digite seu apelido'}
@@ -67,6 +83,7 @@ function SignIn() {
               {!showPassword ? <FiEye /> : <FiEyeOff />}
             </span>
           </Wrapper>
+          {erroSignIn && <MessageError>Apelido ou senha inválido</MessageError>}
 
 
           <Buttons >

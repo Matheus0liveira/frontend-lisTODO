@@ -92,3 +92,10 @@ export const Button = styled.button`
 
   }
 `;
+
+export const MessageError = styled.p`
+  color: #DB504A;
+  font-size: 1.4rem;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+`;

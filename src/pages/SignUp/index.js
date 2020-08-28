@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Input from '../../components/Input';
 
 import api from '../../services/api';
 
-import { UserLogon, Form, Wrapper, Title, Line, Buttons, Button } from './styles'
+import { UserLogon, Form, Wrapper, Title, Line, Buttons, Button, MessageError } from './styles';
 
-import { FiEdit3, FiUser, FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi'
+import { FiEdit3, FiUser, FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 
 
 function SignUp() {
@@ -22,10 +22,31 @@ function SignUp() {
 
   const [showPassword, setShowPassword] = useState(false);
 
+  const [erroSignIn, setErroSignIn] = useState(false);
+
+  const history = useHistory();
 
   async function handleSubmit(event) {
+
     event.preventDefault();
 
+    const
+      { name, nick_name, email, password } = signInValues;
+
+    try {
+
+      const statusResponse = await api.post('/users/signup',
+        {
+          name, nick_name, email, password
+        }
+      );
+
+      history.push('/signin');
+
+    } catch (e) {
+      if (!erroSignIn) setErroSignIn(!erroSignIn);
+
+    };
 
   };
 
@@ -86,6 +107,7 @@ function SignUp() {
               {!showPassword ? <FiEye /> : <FiEyeOff />}
             </span>
           </Wrapper>
+          {<MessageError>Preencha todos os campos</MessageError>}
 
 
           <Buttons>
