@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import useUser from '../../utils/useUser';
+import api from '../../services/api';
+
 import {
 
   Header,
@@ -24,6 +26,7 @@ import Card from '../../components/Card';
 import Modal from '../../components/Modal';
 
 function User() {
+  const [arrayTasks, setArrayTasks] = useState([]);
   const [task, setTask] = useState(
     {
       title: '',
@@ -44,7 +47,27 @@ function User() {
     history.push('/signin');
 
   }
+  useEffect(() => {
 
+    const USER_TOKEN = userValues.token;
+
+    const auth = 'Bearer '.concat(USER_TOKEN);
+
+    (async () => {
+      const tasks = await api.get(
+        `/users/${userValues.user.id}/tasks`,
+        {
+          headers:
+          {
+            Authorization: auth
+          }
+        });
+
+      setArrayTasks(tasks.data);
+
+    })();
+
+  }, [userValues]);
 
   return (
     <>
@@ -55,7 +78,7 @@ function User() {
             <img src="https://avatars2.githubusercontent.com/u/58826355?s=460&u=8c805f2a4e708a2f3ff9c6095373bcb622f1dda2&v=4" alt="" />
           </Image>
           <WrappInfo>
-            <Title>{userValues.User.name}</Title>
+            <Title>{userValues.user.name}</Title>
             <div>
 
               <div>
@@ -87,12 +110,17 @@ function User() {
       </Header>
 
       <Main>
+        {arrayTasks.map(task => (
 
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+          <Card
+            key={task.id}
+            title={task.title}
+            description={task.description}
+            createdAt={task.createdAt}
+
+          />
+
+        ))}
 
       </Main>
       <Modal

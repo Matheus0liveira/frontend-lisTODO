@@ -2,24 +2,26 @@ import React from 'react';
 import { FiXSquare, FiCheckSquare } from 'react-icons/fi';
 
 import { Wrapper, Title } from './styles';
-function Card() {
+function Card({ title, description, createdAt }) {
+
+  const date = createdAt.split('T')[0];
 
   return (
+
+
     <Wrapper>
 
       <header>
 
-        <Title>Title</Title>
-        <Title date='date'> 22/10/2020</Title>
+        <Title>{title}</Title>
+        <Title date='date'> {date}</Title>
 
       </header>
 
       <main>
 
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Nec risus volutpat ultrices id nisl tortor.
-          Aenean pulvinar dictum egestas sed.
+          {description}
         </p>
 
       </main>

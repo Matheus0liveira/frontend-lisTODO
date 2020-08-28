@@ -14,7 +14,6 @@ import User from './pages/User';
 function Routes() {
   const { userValues } = useUser();
 
-  console.log(userValues);
 
 
   const loggedIn = userValues.token;
