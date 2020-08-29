@@ -35,7 +35,7 @@ function SignUp() {
 
     try {
 
-      const statusResponse = await api.post('/users/signup',
+      await api.post('/users/signup',
         {
           name, nick_name, email, password
         }

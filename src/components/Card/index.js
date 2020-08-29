@@ -1,6 +1,4 @@
 import React from 'react';
-import useUsers from '../../utils/useUser';
-import api from '../../services/api';
 
 import { FiXSquare, FiCheckSquare } from 'react-icons/fi';
 

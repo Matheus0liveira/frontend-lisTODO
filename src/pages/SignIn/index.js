@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
@@ -36,7 +36,7 @@ function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [erroSignIn, setErroSignIn] = useState(false);
 
-  const { userValues, setUserValues } = useUser();
+  const { setUserValues } = useUser();
   const history = useHistory();
 
   async function handleSubmit(event) {

@@ -125,9 +125,9 @@ function User() {
 
         <Wrapper right='true'>
 
-          <a onClick={handleMoveToSigninPage}>
+          <span onClick={handleMoveToSigninPage}>
             <FiLogOut />
-          </a>
+          </span>
 
         </Wrapper>
 

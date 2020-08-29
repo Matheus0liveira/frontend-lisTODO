@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
     margin-left:${props => props.left ? '10rem' : ''}; ;
     margin-right:${props => props.right ? '10rem' : ''}; ;
 
-  a svg{
+  a svg, span svg{
 
     color: #52527A;
     font-size: 2rem;
