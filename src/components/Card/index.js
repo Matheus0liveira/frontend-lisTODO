@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import { FiXSquare, FiCheckSquare } from 'react-icons/fi';
 
 import { Wrapper, Title } from './styles';
@@ -10,10 +11,8 @@ import { Wrapper, Title } from './styles';
 function Card({ id, title, description, createdAt, deleteTask }) {
 
 
-  const date = createdAt.split('T')[0];
 
   return (
-
 
     <Wrapper>
 
@@ -21,7 +20,7 @@ function Card({ id, title, description, createdAt, deleteTask }) {
       <header>
 
         <Title>{title}</Title>
-        <Title date='date'> {date}</Title>
+        <Title date='date'> {createdAt}</Title>
 
       </header>
 
@@ -45,8 +44,9 @@ function Card({ id, title, description, createdAt, deleteTask }) {
 
 
 
+
     </Wrapper>
-  )
+  );
 
 
 };

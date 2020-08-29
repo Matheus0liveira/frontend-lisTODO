@@ -16,7 +16,8 @@ function Routes() {
 
 
 
-  const loggedIn = userValues.token;
+  const loggedIn = userValues.token || false;
+
 
   return (
     <BrowserRouter>
@@ -44,6 +45,7 @@ function Routes() {
       <Route exact path='/user' component={User} />
       <Route exact path='/signin' component={SignIn} />
       <Route path='/signUp' component={SignUp} />
+
 
     </BrowserRouter>
   );

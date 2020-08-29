@@ -5,8 +5,20 @@ import usePersistState from '../utils/usePersistState';
 export const UserContext = createContext();
 
 
+
+const initialValues = {
+  user: {
+    id: '',
+    name: '',
+    nick_name: '',
+    email: ''
+  },
+  token: ''
+}
+
+
 function UserProvider({ children }) {
-  const [userValues, setUserValues] = usePersistState('user', {});
+  const [userValues, setUserValues] = usePersistState('user', initialValues);
 
 
   return (

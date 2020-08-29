@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { v4 } from 'uuid';
 import { useHistory } from 'react-router-dom';
 import useUser from '../../utils/useUser';
 import api from '../../services/api';
@@ -29,6 +30,7 @@ function User() {
   const [arrayTasks, setArrayTasks] = useState([]);
   const [task, setTask] = useState(
     {
+      id: v4(),
       title: '',
       description: ''
     }
@@ -36,17 +38,79 @@ function User() {
   const { userValues, setUserValues } = useUser();
   const history = useHistory();
 
+  const likRef = useRef(null);
 
-  function handleSubmit(event) {
-    return event.preventDefault();
+
+
+  function handleCreateTask(event) {
+    event.preventDefault();
+
+    if (!task.title || !task.description) {
+      return alert('Preencha todos os campos!');
+    }
+
+
+
+    const newArray = arrayTasks;
+
+    newArray.push(task);
+
+    setArrayTasks(newArray);
+
+
+    likRef.current.click();
+
+    const { title, description } = task;
+
+    (async () => {
+
+      const USER_TOKEN = userValues.token;
+      const auth = `Bearer ${USER_TOKEN}`;
+
+
+      const task = await api.post(`/users/${userValues.user.id}/tasks`,
+        {
+          title,
+          description
+        },
+        {
+          headers:
+          {
+            Authorization: auth
+          }
+        }
+      )
+
+    })();
+
+
   };
 
   function handleMoveToSigninPage() {
-    setUserValues({});
+    setUserValues(
+      {
+        user: {
+          id: '',
+          name: '',
+          nick_name: '',
+          email: ''
+        },
+        token: ''
+      }
+    );
     sessionStorage.clear();
     history.push('/signin');
 
   }
+
+  useEffect(() => {
+
+    setTask({ ...task, id: v4() });
+
+  }, [task.title]);
+
+
+
   useEffect(() => {
 
     const USER_TOKEN = userValues.token;
@@ -89,14 +153,15 @@ function User() {
         Authorization: auth,
       }
     })
-
-
   };
+
+
+
+
 
   return (
     <>
       <Header>
-
         <Wrapper left='true'>
           <Image>
             <img src="https://avatars2.githubusercontent.com/u/58826355?s=460&u=8c805f2a4e708a2f3ff9c6095373bcb622f1dda2&v=4" alt="" />
@@ -135,26 +200,37 @@ function User() {
 
       <Main>
 
-        {arrayTasks.map(task => (
 
-          <Card
-            key={task.id}
-            id={task.id}
-            title={task.title}
-            description={task.description}
-            createdAt={task.createdAt}
-            deleteTask={handleDeleteTask}
+        {arrayTasks.map(task => {
 
-          />
 
-        ))}
+
+
+          return (
+
+
+            <Card
+              key={task.id}
+              id={task.id}
+              title={task.title}
+              description={task.description}
+              createdAt={'Em breve'}
+              deleteTask={handleDeleteTask}
+
+            />
+          )
+        })}
+
+
 
       </Main>
       <Modal
-        handleSubmit={handleSubmit}
+        handleCreateTask={handleCreateTask}
         task={task}
         setTask={setTask}
+        referenie={likRef}
       />
+
 
 
 

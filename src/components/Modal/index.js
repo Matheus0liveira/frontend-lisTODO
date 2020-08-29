@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 
 import {
@@ -19,14 +19,16 @@ import {
 
 import Input from '../Input';
 
-function Modal({ handleSubmit, task, setTask }) {
+function Modal({ handleCreateTask, task, setTask, referenie }) {
+
+
 
   return (
 
     <StyledModal id="openModel" className="modal">
-      <Close href="#exitModel" title="Fechar" className="exitModel"><FiX /></Close>
+      <Close href="#exitModel" title="Fechar" className="exitModel"> <FiX /> </Close>
 
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleCreateTask}>
 
         <WrapperInput>
           <FiEdit />
@@ -41,7 +43,9 @@ function Modal({ handleSubmit, task, setTask }) {
 
         <WrapperInput>
           <FiAlignJustify />
+
           <Input
+
             type={'text'}
             placeholder={'Descrição'}
             value={task.description}
@@ -52,10 +56,12 @@ function Modal({ handleSubmit, task, setTask }) {
         </WrapperInput>
 
 
-
-        <Button type='submit' >
+        <a href="#exitModel" title="Fechar" className="exitModel" ref={referenie}>
+        </a>
+        <Button type='submit'>
           ADICIONAR
-            </Button>
+        </Button>
+
 
       </Form>
     </StyledModal>

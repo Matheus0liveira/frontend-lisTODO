@@ -112,8 +112,8 @@ export const SubmitButton = styled.a`
 
   display: flex;
   justify-content:center;
-  width: 6
-  0%;
+  align-items:center;
+  width: 50%;
   text-align: center;
   padding: 2rem 6rem;
   background: #52527A;
@@ -131,9 +131,8 @@ export const SubmitButton = styled.a`
   }
   @media (max-width: 700px){
      display: flex;
-     width: 50%;
+     width: 15%;
      margin: 0 auto;
-     justify-self: center;
     }
 
 `;

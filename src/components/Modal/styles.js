@@ -16,13 +16,10 @@ export const StyledModal = styled.div`
   bottom: 0;
   left: 0;
   margin:  10rem auto;
-  font-family: Arial, Helvetica, sans-serif;
   background:#FDFFF7 ;
   border: 0.2rem solid #52527A;
   z-index: 99999;
   opacity:0;
-  -webkit-transition: opacity 400ms ease-in;
-  -moz-transition: opacity 400ms ease-in;
   transition: opacity 400ms ease-in;
   pointer-events: none;
 
@@ -31,6 +28,7 @@ export const StyledModal = styled.div`
   opacity: 1;
   pointer-events: auto;
   }
+
   & > div {
   width: 400px;
   position: relative;
@@ -96,18 +94,23 @@ export const WrapperInput = styled.div`
 `;
 export const Button = styled.button`
 
+  display: inline-block;
+  text-align: center;
   width: 100%;
-  padding: 1.4rem 0.5rem;
-  font-size: 1.4rem;
-  background: #202030 ;
+  background: #202030;
   border: 0;
-  color: #DADAE7;
   font-weight: bold;
+  font-size: 1.4rem;
+  padding: 1.5rem 0;
+  width: 100%;
+  color: #DADAE7;
   transition: all .4s;
   cursor: pointer;
 
   &:hover{
-    background: #DADAE7;
-    color:#202030;
+  background:#52527A;
+
   }
+
+
 `;
