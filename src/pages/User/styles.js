@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
     margin-left:${(props) => props.left && '10rem'} ;
     margin-right:${(props) => props.right && '10rem'} ;
 
-  a svg,
+
   span svg{
 
     color: #52527A;
@@ -120,8 +120,10 @@ export const SubmitButton = styled.a`
   border: 0;
   color: #FDFFF7;
   font-size: 2.5rem;
-  margin: 2rem 0;
   transition: opacity .2s;
+
+  margin-bottom: 2rem;
+  margin-right: 1rem;
   cursor: pointer;
 
 
@@ -139,6 +141,42 @@ export const SubmitButton = styled.a`
 
 `;
 
+
+
+export const CheckBox = styled(SubmitButton)`
+
+
+  background: #44CF6C;
+  padding: 0 1.5rem;
+  margin-right: 0;
+  transition: all .5s ease-in-out;
+
+
+  &:hover svg{
+    color:#44CF6C;
+    transform: rotateY(360deg);
+  }
+  &:hover {
+    background:#52527A;
+  }
+
+
+  svg{
+    font-size: 4rem;
+    transition: all .8s ease-in-out;
+
+  }
+
+  @media (max-width: 700px){
+
+    padding: 0 2rem;
+  };
+
+
+
+
+
+`;
 export const Main = styled.main`
   display: flex;
   flex-direction: row;
@@ -146,7 +184,6 @@ export const Main = styled.main`
   align-items: center;
   justify-content: center;
 
-   @media (max-width: 930px){
-    }
+
 
 `;

@@ -5,6 +5,7 @@ import {
   FiLogOut,
   FiClock,
   FiBook,
+  FiCheckSquare
 } from 'react-icons/fi';
 import useUser from '../../utils/useUser';
 import api from '../../services/api';
@@ -18,6 +19,7 @@ import {
   Title,
   SubmitButton,
   Main,
+  CheckBox
 } from './styles';
 
 import Card from '../../components/Card';
@@ -154,17 +156,19 @@ function User() {
 
             </div>
 
-            <SubmitButton href="#openModel" type="submit"> CRIAR</SubmitButton>
-
+            <div>
+              <SubmitButton href="#openModel" type="submit"> CRIAR</SubmitButton>
+              <CheckBox> <FiCheckSquare /> </CheckBox>
+            </div>
           </WrappInfo>
 
         </Wrapper>
 
         <Wrapper right>
 
-          <Title onClick={handleMoveToSigninPage}>
+          <span className='exit' onClick={handleMoveToSigninPage}>
             <FiLogOut />
-          </Title>
+          </span>
 
         </Wrapper>
 

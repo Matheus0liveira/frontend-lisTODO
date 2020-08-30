@@ -16,7 +16,7 @@ import {
 import Input from '../Input';
 
 function Modal({
-  handleCreateTask, task, setTask, referenie,
+  handleCreateTask, task, setTask, referencie,
 }) {
   return (
 
@@ -53,7 +53,7 @@ function Modal({
           />
         </WrapperInput>
 
-        <a href="#exitModel" title="Fechar" className="exitModel" ref={referenie} />
+        <a href="#exitModel" title="Fechar" className="exitModel" ref={referencie} />
 
         <Button type="submit">
           ADICIONAR
