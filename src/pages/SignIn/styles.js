@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const UserSignIn = styled.div`
 
     display: flex;
@@ -20,7 +19,6 @@ export const Form = styled.form`
 
 `;
 
-
 export const Title = styled.h1`
   font-family: 'Oswald', sans-serif;
   line-height: 0.9;
@@ -29,7 +27,6 @@ export const Title = styled.h1`
   text-align: center;
   color: #52527A;
 `;
-
 
 export const Wrapper = styled.div`
 
@@ -50,8 +47,12 @@ export const Wrapper = styled.div`
     width: 2rem;
     color: #52527A;
   }
-`;
 
+
+  h1{
+    cursor: pointer;
+  }
+`;
 
 export const Line = styled.hr`
   margin: 4rem 0;
@@ -73,25 +74,26 @@ export const Buttons = styled.div`
 
 
 
-`;
 
+
+`;
 
 export const Button = styled.button`
   width: 100%;
-  padding: ${props => props.type ? '1.4rem 0.5rem' : '1.2rem 0.5rem'} ;
+  padding: ${(props) => (props.type ? '1.4rem 0.5rem' : '1.2rem 0.5rem')} ;
   font-size: 1.4rem;
-  margin-left: ${props => props.type ? ' 2rem' : 'none'} ;
-  background: ${props => props.type ? '#202030' : 'none'} ;
-  border: ${props => props.type ? '0' : '0.2rem solid #202030'};
-  color: ${props => props.type ? '#DADAE7' : '#52527A '};
-  font-weight: ${props => props.type ? 'bold' : 'lighter '};
+  margin-left: ${(props) => (props.type ? ' 2rem' : 'none')} ;
+  background: ${(props) => (props.type ? '#202030' : 'none')} ;
+  border: ${(props) => (props.type ? '0' : '0.2rem solid #202030')};
+  color: ${(props) => (props.type ? '#DADAE7' : '#52527A ')};
+  font-weight: ${(props) => (props.type ? 'bold' : 'lighter ')};
   transition: all .5s;
   cursor: pointer;
 
   &:hover{
-    background: ${props => props.type ? '#52527A' : '#52527A'};
-    color: ${props => props.type ? '#DADAE7' : '#DADAE7 '};
-    border: ${props => props.type ? '0' : '0.2rem solid #52527A'};
+    background: ${(props) => (props.type ? '#52527A' : '#52527A')};
+    color: ${(props) => (props.type ? '#DADAE7' : '#DADAE7 ')};
+    border: ${(props) => (props.type ? '0' : '0.2rem solid #52527A')};
 
   }
 `;
@@ -103,4 +105,3 @@ export const MessageError = styled.p`
   margin-bottom: 2rem;
   font-style: italic;
 `;
-

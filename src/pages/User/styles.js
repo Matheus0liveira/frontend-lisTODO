@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const Header = styled.header`
 
   display: flex;
@@ -18,12 +17,11 @@ export const Header = styled.header`
 
 `;
 
-
 export const Wrapper = styled.div`
 
     display: flex;
-    margin-left:${props => props.left && '10rem'} ;
-    margin-right:${props => props.right && '10rem'} ;
+    margin-left:${(props) => props.left && '10rem'} ;
+    margin-right:${(props) => props.right && '10rem'} ;
 
   a svg,
   span svg{
@@ -59,7 +57,6 @@ export const Wrapper = styled.div`
 
 `;
 
-
 export const Image = styled.div`
 
   img{
@@ -68,7 +65,6 @@ export const Image = styled.div`
 
 `;
 
-
 export const Title = styled.h1`
 
   font-size: 4rem;
@@ -76,7 +72,6 @@ export const Title = styled.h1`
   margin-top: -1.5rem;
 
 `;
-
 
 export const WrappInfo = styled.div`
   margin:  1rem;
@@ -113,7 +108,6 @@ export const WrappInfo = styled.div`
   }
 `;
 
-
 export const SubmitButton = styled.a`
 
   display: flex;
@@ -144,7 +138,6 @@ export const SubmitButton = styled.a`
     }
 
 `;
-
 
 export const Main = styled.main`
   display: flex;

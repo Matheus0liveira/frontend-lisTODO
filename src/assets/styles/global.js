@@ -32,7 +32,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 
-`
+`;
 
 export const Container = styled.div`
 
@@ -40,4 +40,4 @@ export const Container = styled.div`
   max-width: 1200px;
   padding: 0 2%;
   margin: 0 auto;
-`
+`;

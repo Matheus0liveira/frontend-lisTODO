@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-
-
 export const StyledModal = styled.div`
   display: flex;
   align-items: center;
@@ -40,7 +38,6 @@ export const StyledModal = styled.div`
 
 `;
 
-
 export const Form = styled.form`
 
   width: 50%;
@@ -50,7 +47,6 @@ export const Form = styled.form`
 
 
 `;
-
 
 export const Close = styled.a`
 
@@ -73,8 +69,6 @@ export const Close = styled.a`
     transform: rotate(180deg);
   }
 `;
-
-
 
 export const WrapperInput = styled.div`
 

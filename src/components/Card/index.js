@@ -1,26 +1,23 @@
 import React from 'react';
 
-
 import { FiXSquare, FiCheckSquare } from 'react-icons/fi';
 
 import { Wrapper, Title } from './styles';
 
-
-
-
-function Card({ id, title, description, createdAt, deleteTask }) {
-
-
-
+function Card({
+  id, title, description, createdAt, deleteTask,
+}) {
   return (
 
     <Wrapper>
 
-
       <header>
 
         <Title>{title}</Title>
-        <Title date> {createdAt}</Title>
+        <Title date>
+          {' '}
+          {createdAt}
+        </Title>
 
       </header>
 
@@ -35,16 +32,14 @@ function Card({ id, title, description, createdAt, deleteTask }) {
       <footer>
 
         <div>
-          <FiXSquare delete='delete' onClick={() => deleteTask(id)} />
+          <FiXSquare delete="delete" onClick={() => deleteTask(id)} />
           <FiCheckSquare />
         </div>
 
       </footer>
 
-    </Wrapper >
+    </Wrapper>
   );
-
-
-};
+}
 
 export default Card;

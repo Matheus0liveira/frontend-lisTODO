@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { v4 } from 'uuid';
 import { useHistory } from 'react-router-dom';
+import {
+  FiLogOut,
+  FiClock,
+  FiBook,
+} from 'react-icons/fi';
 import useUser from '../../utils/useUser';
 import api from '../../services/api';
 
@@ -12,74 +17,53 @@ import {
   Image,
   Title,
   SubmitButton,
-  Main
+  Main,
 } from './styles';
-
-
-import {
-  FiLogOut,
-  FiClock,
-  FiBook
-} from 'react-icons/fi';
-
 
 import Card from '../../components/Card';
 import Modal from '../../components/Modal';
 
 function User() {
-
-
   const [arrayTasks, setArrayTasks] = useState([]);
   const [task, setTask] = useState(
     {
       id: v4(),
       title: '',
-      description: ''
-    }
+      description: '',
+    },
   );
   const { userValues, setUserValues } = useUser();
-
 
   const history = useHistory();
   const linkRef = useRef(null);
 
   useEffect(() => {
-
     if (!task.id) {
       return setTask(({ ...task, id: v4() }));
-    };
-
-
+    }
   }, [task.title, task]);
 
-
   useEffect(() => {
-
-
     const { token } = userValues;
 
     const auth = ` Bearer ${token}`;
 
     (async () => {
-
       const tasks = await api.get(
         `/users/${userValues.user.id}/tasks`,
-        { headers: { Authorization: auth } });
+        { headers: { Authorization: auth } },
+      );
 
       setArrayTasks(tasks.data);
-
     })();
-
   }, [userValues]);
 
   const handleCreateTask = (event) => {
     event.preventDefault();
 
-
     if (!task.title || !task.description) {
       return alert('Preencha todos os campos!');
     }
-
 
     const newArray = arrayTasks;
 
@@ -87,64 +71,50 @@ function User() {
 
     setArrayTasks(newArray);
 
-
     linkRef.current.click();
-
 
     const { title, description } = task;
 
     (async () => {
-
       const USER_TOKEN = userValues.token;
       const auth = `Bearer ${USER_TOKEN}`;
-
 
       await api.post(`/users/${userValues.user.id}/tasks`,
         {
           title,
-          description
+          description,
         },
         {
           headers:
           {
-            Authorization: auth
-          }
-        }
-      );
+            Authorization: auth,
+          },
+        });
 
       setTimeout(() => setTask({ title: '', description: '' }), 1000);
-
     })();
-
-
   };
 
   const handleMoveToSigninPage = () => {
-
     setUserValues(
       {
         user: {
           id: '',
           name: '',
           nick_name: '',
-          email: ''
+          email: '',
         },
-        token: ''
-      }
+        token: '',
+      },
     );
     sessionStorage.clear();
     history.push('/signin');
-
-  }
-
+  };
 
   const handleDeleteTask = async (id) => {
-
-
-    const newArraytasks = arrayTasks.filter(task => id !== task.id);
+    const newArraytasks = arrayTasks.filter((task) => id !== task.id);
 
     setArrayTasks(newArraytasks);
-
 
     const { token } = userValues;
     const auth = `Bearer ${token}`;
@@ -153,18 +123,20 @@ function User() {
 
       headers: {
         Authorization: auth,
-      }
-    })
+      },
+    });
   };
-
 
   return (
     <>
       <Header>
         <Wrapper left>
           <Image>
-            <img src="https://avatars2.githubusercontent.com/u/58826355?s=460&
-            u=8c805f2a4e708a2f3ff9c6095373bcb622f1dda2&v=4" alt="" />
+            <img
+              src="https://avatars2.githubusercontent.com/u/58826355?s=460&
+            u=8c805f2a4e708a2f3ff9c6095373bcb622f1dda2&v=4"
+              alt=""
+            />
           </Image>
           <WrappInfo>
             <Title>{userValues.user.name}</Title>
@@ -182,7 +154,7 @@ function User() {
 
             </div>
 
-            <SubmitButton href="#openModel" type='submit'> CRIAR</SubmitButton>
+            <SubmitButton href="#openModel" type="submit"> CRIAR</SubmitButton>
 
           </WrappInfo>
 
@@ -190,9 +162,9 @@ function User() {
 
         <Wrapper right>
 
-          <span onClick={handleMoveToSigninPage}>
+          <Title onClick={handleMoveToSigninPage}>
             <FiLogOut />
-          </span>
+          </Title>
 
         </Wrapper>
 
@@ -200,25 +172,17 @@ function User() {
 
       <Main>
 
+        {arrayTasks.map((task) => (
 
-        {arrayTasks.map(task => {
-
-          return (
-
-
-            <Card
-              key={task.id}
-              id={task.id}
-              title={task.title}
-              description={task.description}
-              createdAt={'Em breve'}
-              deleteTask={handleDeleteTask}
-
-            />
-          )
-        })}
-
-
+          <Card
+            key={task.id}
+            id={task.id}
+            title={task.title}
+            description={task.description}
+            createdAt="Em breve"
+            deleteTask={handleDeleteTask}
+          />
+        ))}
 
       </Main>
       <Modal
@@ -228,12 +192,8 @@ function User() {
         referenie={linkRef}
       />
 
-
-
     </>
   );
-};
-
-
+}
 
 export default User;

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-
-
 export const Wrapper = styled.article`
 
   padding: 2rem ;
@@ -57,6 +55,6 @@ export const Wrapper = styled.article`
 `;
 export const Title = styled.h4`
 
-  font-size: ${props => props.date ? '1.5rem' : ''};
+  font-size: ${(props) => (props.date ? '1.5rem' : '')};
   color: #52527A;
 `;
