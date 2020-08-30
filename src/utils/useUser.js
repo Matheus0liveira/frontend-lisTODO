@@ -14,5 +14,4 @@ function useUser() {
   return { userValues, setUserValues };
 };
 
-
 export default useUser;

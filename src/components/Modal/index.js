@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 
 import {
@@ -41,6 +41,7 @@ function Modal({ handleCreateTask, task, setTask, referenie }) {
           />
         </WrapperInput>
 
+
         <WrapperInput>
           <FiAlignJustify />
 
@@ -58,6 +59,7 @@ function Modal({ handleCreateTask, task, setTask, referenie }) {
 
         <a href="#exitModel" title="Fechar" className="exitModel" ref={referenie}>
         </a>
+
         <Button type='submit'>
           ADICIONAR
         </Button>

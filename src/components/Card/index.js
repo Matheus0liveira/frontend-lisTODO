@@ -20,7 +20,7 @@ function Card({ id, title, description, createdAt, deleteTask }) {
       <header>
 
         <Title>{title}</Title>
-        <Title date='date'> {createdAt}</Title>
+        <Title date> {createdAt}</Title>
 
       </header>
 
@@ -41,15 +41,10 @@ function Card({ id, title, description, createdAt, deleteTask }) {
 
       </footer>
 
-
-
-
-
-    </Wrapper>
+    </Wrapper >
   );
 
 
 };
-
 
 export default Card;

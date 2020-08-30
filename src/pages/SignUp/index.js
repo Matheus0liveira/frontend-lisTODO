@@ -4,9 +4,25 @@ import Input from '../../components/Input';
 
 import api from '../../services/api';
 
-import { UserLogon, Form, Wrapper, Title, Line, Buttons, Button, MessageError } from './styles';
+import {
+  UserLogon,
+  Form,
+  Wrapper,
+  Title,
+  Line,
+  Buttons,
+  Button,
+  MessageError
+} from './styles';
 
-import { FiEdit3, FiUser, FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
+import {
+  FiEdit3,
+  FiUser,
+  FiMail,
+  FiLock,
+  FiEye,
+  FiEyeOff
+} from 'react-icons/fi';
 
 
 function SignUp() {
@@ -19,19 +35,21 @@ function SignUp() {
       password: ''
     }
   );
-
   const [showPassword, setShowPassword] = useState(false);
-
   const [erroSignIn, setErroSignIn] = useState(false);
 
   const history = useHistory();
 
-  async function handleSubmit(event) {
+
+  const handleSubmit = async (event) => {
 
     event.preventDefault();
 
-    const
-      { name, nick_name, email, password } = signInValues;
+    const { name, nick_name, email, password } = signInValues;
+
+    if (!name || !nick_name || !email || !password) {
+      return !erroSignIn && setErroSignIn(!erroSignIn);
+    }
 
     try {
 
@@ -53,8 +71,12 @@ function SignUp() {
 
   return (
     <UserLogon>
+
       <div>
+
+
         <Title>Cadastrar</Title>
+
         <Line />
 
         <Form onSubmit={handleSubmit}>
@@ -124,14 +146,20 @@ function SignUp() {
             </Button>
 
 
-
-
-
           </Buttons>
+
         </Form >
+
+
       </div>
+
     </UserLogon>
+
   );
+
 }
+
+
+
 
 export default SignUp;

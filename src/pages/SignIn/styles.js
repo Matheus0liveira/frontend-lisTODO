@@ -43,6 +43,7 @@ export const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
 
   svg{
@@ -50,6 +51,8 @@ export const Wrapper = styled.div`
     color: #52527A;
   }
 `;
+
+
 export const Line = styled.hr`
   margin: 4rem 0;
   background: #DADAE7;
@@ -75,20 +78,20 @@ export const Buttons = styled.div`
 
 export const Button = styled.button`
   width: 100%;
-  padding: ${props => props.type === 'submit' ? '1.4rem 0.5rem' : '1.2rem 0.5rem'} ;
+  padding: ${props => props.type ? '1.4rem 0.5rem' : '1.2rem 0.5rem'} ;
   font-size: 1.4rem;
-  margin-left: ${props => props.type === 'submit' ? ' 2rem' : 'none'} ;
-  background: ${props => props.type === 'submit' ? '#202030' : 'none'} ;
-  border: ${props => props.type === 'submit' ? '0' : '0.2rem solid #202030'};
-  color: ${props => props.type === 'submit' ? '#DADAE7' : '#52527A '};
-  font-weight: ${props => props.type === 'submit' ? 'bold' : 'lighter '};
-  transition: all .2s;
+  margin-left: ${props => props.type ? ' 2rem' : 'none'} ;
+  background: ${props => props.type ? '#202030' : 'none'} ;
+  border: ${props => props.type ? '0' : '0.2rem solid #202030'};
+  color: ${props => props.type ? '#DADAE7' : '#52527A '};
+  font-weight: ${props => props.type ? 'bold' : 'lighter '};
+  transition: all .5s;
   cursor: pointer;
 
   &:hover{
-    background: ${props => props.type === 'submit' ? '#52527A' : '#52527A'};
-    color: ${props => props.type === 'submit' ? '#DADAE7' : '#DADAE7 '};
-    border: ${props => props.type === 'submit' ? '0' : '0.2rem solid #52527A'};
+    background: ${props => props.type ? '#52527A' : '#52527A'};
+    color: ${props => props.type ? '#DADAE7' : '#DADAE7 '};
+    border: ${props => props.type ? '0' : '0.2rem solid #52527A'};
 
   }
 `;

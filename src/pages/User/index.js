@@ -12,7 +12,7 @@ import {
   Image,
   Title,
   SubmitButton,
-  Main,
+  Main
 } from './styles';
 
 
@@ -27,6 +27,8 @@ import Card from '../../components/Card';
 import Modal from '../../components/Modal';
 
 function User() {
+
+
   const [arrayTasks, setArrayTasks] = useState([]);
   const [task, setTask] = useState(
     {
@@ -36,19 +38,47 @@ function User() {
     }
   );
   const { userValues, setUserValues } = useUser();
+
+
   const history = useHistory();
+  const linkRef = useRef(null);
 
-  const likRef = useRef(null);
+  useEffect(() => {
+
+    if (!task.id) {
+      return setTask(({ ...task, id: v4() }));
+    };
 
 
+  }, [task.title, task]);
 
-  function handleCreateTask(event) {
+
+  useEffect(() => {
+
+
+    const { token } = userValues;
+
+    const auth = ` Bearer ${token}`;
+
+    (async () => {
+
+      const tasks = await api.get(
+        `/users/${userValues.user.id}/tasks`,
+        { headers: { Authorization: auth } });
+
+      setArrayTasks(tasks.data);
+
+    })();
+
+  }, [userValues]);
+
+  const handleCreateTask = (event) => {
     event.preventDefault();
+
 
     if (!task.title || !task.description) {
       return alert('Preencha todos os campos!');
     }
-
 
 
     const newArray = arrayTasks;
@@ -58,7 +88,8 @@ function User() {
     setArrayTasks(newArray);
 
 
-    likRef.current.click();
+    linkRef.current.click();
+
 
     const { title, description } = task;
 
@@ -68,7 +99,7 @@ function User() {
       const auth = `Bearer ${USER_TOKEN}`;
 
 
-      const task = await api.post(`/users/${userValues.user.id}/tasks`,
+      await api.post(`/users/${userValues.user.id}/tasks`,
         {
           title,
           description
@@ -79,14 +110,17 @@ function User() {
             Authorization: auth
           }
         }
-      )
+      );
+
+      setTimeout(() => setTask({ title: '', description: '' }), 1000);
 
     })();
 
 
   };
 
-  function handleMoveToSigninPage() {
+  const handleMoveToSigninPage = () => {
+
     setUserValues(
       {
         user: {
@@ -103,40 +137,8 @@ function User() {
 
   }
 
-  useEffect(() => {
 
-    setTask({ ...task, id: v4() });
-
-  }, [task.title]);
-
-
-
-  useEffect(() => {
-
-    const USER_TOKEN = userValues.token;
-
-    const auth = 'Bearer '.concat(USER_TOKEN);
-
-    (async () => {
-      const tasks = await api.get(
-        `/users/${userValues.user.id}/tasks`,
-        {
-          headers:
-          {
-            Authorization: auth
-          }
-        });
-
-      setArrayTasks(tasks.data);
-
-    })();
-
-  }, [userValues]);
-
-
-
-
-  async function handleDeleteTask(id) {
+  const handleDeleteTask = async (id) => {
 
 
     const newArraytasks = arrayTasks.filter(task => id !== task.id);
@@ -144,8 +146,8 @@ function User() {
     setArrayTasks(newArraytasks);
 
 
-    const USER_TOKEN = userValues.token;
-    const auth = 'Bearer '.concat(USER_TOKEN);
+    const { token } = userValues;
+    const auth = `Bearer ${token}`;
 
     await api.delete(`/users/${userValues.user.id}/tasks/${id}`, {
 
@@ -156,15 +158,13 @@ function User() {
   };
 
 
-
-
-
   return (
     <>
       <Header>
-        <Wrapper left='true'>
+        <Wrapper left>
           <Image>
-            <img src="https://avatars2.githubusercontent.com/u/58826355?s=460&u=8c805f2a4e708a2f3ff9c6095373bcb622f1dda2&v=4" alt="" />
+            <img src="https://avatars2.githubusercontent.com/u/58826355?s=460&
+            u=8c805f2a4e708a2f3ff9c6095373bcb622f1dda2&v=4" alt="" />
           </Image>
           <WrappInfo>
             <Title>{userValues.user.name}</Title>
@@ -177,7 +177,7 @@ function User() {
 
               <div>
                 <FiBook />
-                <span>5</span>
+                <span>{arrayTasks.length}</span>
               </div>
 
             </div>
@@ -188,7 +188,7 @@ function User() {
 
         </Wrapper>
 
-        <Wrapper right='true'>
+        <Wrapper right>
 
           <span onClick={handleMoveToSigninPage}>
             <FiLogOut />
@@ -202,9 +202,6 @@ function User() {
 
 
         {arrayTasks.map(task => {
-
-
-
 
           return (
 
@@ -228,11 +225,8 @@ function User() {
         handleCreateTask={handleCreateTask}
         task={task}
         setTask={setTask}
-        referenie={likRef}
+        referenie={linkRef}
       />
-
-
-
 
 
 

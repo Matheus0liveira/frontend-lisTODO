@@ -17,13 +17,16 @@ export const Header = styled.header`
   }
 
 `;
+
+
 export const Wrapper = styled.div`
 
     display: flex;
-    margin-left:${props => props.left ? '10rem' : ''}; ;
-    margin-right:${props => props.right ? '10rem' : ''}; ;
+    margin-left:${props => props.left && '10rem'} ;
+    margin-right:${props => props.right && '10rem'} ;
 
-  a svg, span svg{
+  a svg,
+  span svg{
 
     color: #52527A;
     font-size: 2rem;
@@ -36,13 +39,12 @@ export const Wrapper = styled.div`
 
     }
 
-
-
     @media (max-width: 700px){
     position: absolute;
     top: 2.3rem;
     right: 2rem;
-  }
+
+    }
 
   }
 
@@ -61,7 +63,7 @@ export const Wrapper = styled.div`
 export const Image = styled.div`
 
   img{
-    width: 15rem;
+    width: 15.5rem;
   }
 
 `;
@@ -74,6 +76,8 @@ export const Title = styled.h1`
   margin-top: -1.5rem;
 
 `;
+
+
 export const WrappInfo = styled.div`
   margin:  1rem;
 
@@ -101,13 +105,15 @@ export const WrappInfo = styled.div`
     footer a {
       width: 100%;
       height: 100%;
-      z-index: 9999;
+      z-index: 99;
 
     }
 
 
   }
 `;
+
+
 export const SubmitButton = styled.a`
 
   display: flex;
@@ -129,6 +135,8 @@ export const SubmitButton = styled.a`
     opacity: 0.9;
 
   }
+
+
   @media (max-width: 700px){
      display: flex;
      width: 15%;
@@ -148,7 +156,4 @@ export const Main = styled.main`
    @media (max-width: 930px){
     }
 
-
 `;
-
-
