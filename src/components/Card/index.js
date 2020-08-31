@@ -7,13 +7,16 @@ import { Wrapper, Title } from './styles';
 function Card({
   id, title, description, createdAt, deleteTask,
 }) {
+
+  const newTitle = title.substring(0, 10);
+
   return (
 
     <Wrapper>
 
       <header>
 
-        <Title>{title}</Title>
+        <Title>{newTitle.length >= 5 ? `${newTitle}...` : newTitle}</Title>
         <Title date>
           {' '}
           {createdAt}

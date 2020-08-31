@@ -62,7 +62,7 @@ export const Close = styled.a`
 
   svg{
 
-    transition: transform .5s cubic-bezier(0.75,-0.87, 0, 1.21);
+    transition: transform .8s cubic-bezier(1,-0.81, 0.15, 1.18) ;
   }
 
   svg:hover{
@@ -98,7 +98,7 @@ export const Button = styled.button`
   padding: 1.5rem 0;
   width: 100%;
   color: #DADAE7;
-  transition: all .4s;
+  transition: all .5s;
   cursor: pointer;
 
   &:hover{

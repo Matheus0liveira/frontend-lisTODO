@@ -2,12 +2,18 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.article`
 
-  padding: 2rem ;
+  padding: 2rem;
   width: 30%;
+  max-width: 35rem;
   background: #DADAE7;
   margin: 2rem;
-  transition: all 1s;
+  transition: all .5s;
+  overFlow: hidden;
 
+
+  &:hover{
+    margin-top: 1.5rem;
+  }
 
 
   header{
@@ -50,6 +56,10 @@ export const Wrapper = styled.article`
 
      @media (max-width: 700px){
      width: 100%;
+
+     &:hover{
+    margin-top: 2rem;
+  }
     }
 
 `;

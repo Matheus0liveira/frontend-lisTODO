@@ -24,6 +24,14 @@ export const Wrapper = styled.div`
     margin-right:${(props) => props.right && '10rem'} ;
 
 
+    @media (max-width: 700px){
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+   }
+
   span svg{
 
     color: #52527A;
@@ -31,31 +39,27 @@ export const Wrapper = styled.div`
     transition: opacity .2s;
     cursor: pointer;
 
+    polyline, line{
 
-    &:hover{
-      opacity: 0.6;
+    transition: all 1s ease;
+    }
 
+    &:hover polyline, &:hover line{
+
+      transform: skew(360deg);
     }
 
     @media (max-width: 700px){
     position: absolute;
     top: 2.3rem;
     right: 2rem;
+    };
 
-    }
-
-  }
-
-  @media (max-width: 700px){
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-  }
+  };
 
 
 `;
+
 
 export const Image = styled.div`
 
@@ -183,6 +187,12 @@ export const Main = styled.main`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  padding: 0 auto;
+
+  @media (max-width: 700px){
+    justify-content: center;
+    margin: 0 auto;
+  }
 
 
 

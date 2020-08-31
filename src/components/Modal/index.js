@@ -18,6 +18,9 @@ import Input from '../Input';
 function Modal({
   handleCreateTask, task, setTask, referencie,
 }) {
+
+
+
   return (
 
     <StyledModal id="openModel" className="modal">

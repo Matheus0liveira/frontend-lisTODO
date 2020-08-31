@@ -129,6 +129,9 @@ function User() {
     });
   };
 
+  const newName = userValues.user.name.substring(0, 16);
+
+
   return (
     <>
       <Header>
@@ -141,7 +144,7 @@ function User() {
             />
           </Image>
           <WrappInfo>
-            <Title>{userValues.user.name}</Title>
+            <Title>{newName.length >= 10 ? `${newName}...` : newName}</Title>
             <div>
 
               <div>
@@ -166,7 +169,7 @@ function User() {
 
         <Wrapper right>
 
-          <span className='exit' onClick={handleMoveToSigninPage}>
+          <span onClick={handleMoveToSigninPage}>
             <FiLogOut />
           </span>
 
@@ -193,7 +196,7 @@ function User() {
         handleCreateTask={handleCreateTask}
         task={task}
         setTask={setTask}
-        referenie={linkRef}
+        referencie={linkRef}
       />
 
     </>
