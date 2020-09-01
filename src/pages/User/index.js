@@ -9,6 +9,9 @@ import {
 } from 'react-icons/fi';
 import useUser from '../../utils/useUser';
 import api from '../../services/api';
+import Lottie from 'react-lottie';
+
+import empty from '../../assets/lottie/empty.json';
 
 import {
 
@@ -19,7 +22,8 @@ import {
   Title,
   SubmitButton,
   Main,
-  CheckBox
+  CheckBox,
+  Empty
 } from './styles';
 
 import Card from '../../components/Card';
@@ -38,6 +42,17 @@ function User() {
 
   const history = useHistory();
   const linkRef = useRef(null);
+
+
+
+  const defaultEmpty = {
+    loop: true,
+    autoplay: true,
+    animationData: empty,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  }
 
   useEffect(() => {
     if (!task.id) {
@@ -178,18 +193,33 @@ function User() {
       </Header>
 
       <Main>
+        {arrayTasks.length === 0
+          ?
+          <Empty>
+            <Lottie options={defaultEmpty} isClickToPauseDisabled width={200} />
+            <Title>Sem tarefas <br /> no momento</Title>
+          </Empty>
+          :
 
-        {arrayTasks.map((task) => (
 
-          <Card
-            key={task.id}
-            id={task.id}
-            title={task.title}
-            description={task.description}
-            createdAt="Em breve"
-            deleteTask={handleDeleteTask}
-          />
-        ))}
+          arrayTasks.map((task) => (
+
+            <Card
+              key={task.id}
+              id={task.id}
+              title={task.title}
+              description={task.description}
+              createdAt="Em breve"
+              deleteTask={handleDeleteTask}
+
+            />
+          ))
+
+
+
+
+        }
+
 
       </Main>
       <Modal

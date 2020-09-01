@@ -189,10 +189,25 @@ export const Main = styled.main`
   justify-content: center;
   padding: 0 auto;
 
+  h1{
+    font-size: 2rem;
+    font-weight: lighter;
+  }
+
   @media (max-width: 700px){
     justify-content: center;
     margin: 0 auto;
   }
+
+
+
+`;
+export const Empty = styled.main`
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+
 
 
 
