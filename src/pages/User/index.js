@@ -1,36 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { v4 } from 'uuid';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  FiLogOut,
-  FiClock,
-  FiBook,
-  FiCheckSquare
-} from 'react-icons/fi';
-import useUser from '../../utils/useUser';
+import { v4 } from 'uuid';
+
 import api from '../../services/api';
-import Lottie from 'react-lottie';
+import useUser from '../../utils/useUser';
 
-import empty from '../../assets/lottie/empty.json';
+import Header from '../../components/Header';
+import Tasks from '../../components/Tasks';
 
-import {
 
-  Header,
-  Wrapper,
-  WrappInfo,
-  Image,
-  Title,
-  SubmitButton,
-  Main,
-  CheckBox,
-  Empty
-} from './styles';
 
-import Card from '../../components/Card';
-import Modal from '../../components/Modal';
+import { Main } from './styles';
 
 function User() {
+
   const [arrayTasks, setArrayTasks] = useState([]);
+
   const [task, setTask] = useState(
     {
       id: v4(),
@@ -38,21 +23,13 @@ function User() {
       description: '',
     },
   );
+
   const { userValues, setUserValues } = useUser();
 
-  const history = useHistory();
+
   const linkRef = useRef(null);
+  const history = useHistory();
 
-
-
-  const defaultEmpty = {
-    loop: true,
-    autoplay: true,
-    animationData: empty,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
-  }
 
   useEffect(() => {
     if (!task.id) {
@@ -74,6 +51,7 @@ function User() {
       setArrayTasks(tasks.data);
     })();
   }, [userValues]);
+
 
   const handleCreateTask = (event) => {
     event.preventDefault();
@@ -124,7 +102,7 @@ function User() {
         token: '',
       },
     );
-    sessionStorage.clear();
+    sessionStorage.removeItem('user');
     history.push('/signin');
   };
 
@@ -144,93 +122,32 @@ function User() {
     });
   };
 
-  const newName = userValues.user.name.substring(0, 16);
-
 
   return (
     <>
-      <Header>
-        <Wrapper left>
-          <Image>
-            <img
-              src="https://avatars2.githubusercontent.com/u/58826355?s=460&
-            u=8c805f2a4e708a2f3ff9c6095373bcb622f1dda2&v=4"
-              alt=""
-            />
-          </Image>
-          <WrappInfo>
-            <Title>{newName.length >= 10 ? `${newName}...` : newName}</Title>
-            <div>
+      <Header
+        handleCreateTask={handleCreateTask}
+        handleMoveToSigninPage={handleMoveToSigninPage}
+        task={task}
+        setTask={setTask}
+        arrayTasks={arrayTasks}
+        handleDeleteTask={handleDeleteTask}
+        linkCreate={linkRef}
+      />
 
-              <div>
-                <FiClock />
-                <span>3</span>
-              </div>
-
-              <div>
-                <FiBook />
-                <span>{arrayTasks.length}</span>
-              </div>
-
-            </div>
-
-            <div>
-              <SubmitButton href="#openModel" type="submit"> CRIAR</SubmitButton>
-              <CheckBox> <FiCheckSquare /> </CheckBox>
-            </div>
-          </WrappInfo>
-
-        </Wrapper>
-
-        <Wrapper right>
-
-          <span onClick={handleMoveToSigninPage}>
-            <FiLogOut />
-          </span>
-
-        </Wrapper>
-
-      </Header>
 
       <Main>
-        {arrayTasks.length === 0
-          ?
-          <Empty>
-            <Lottie options={defaultEmpty} isClickToPauseDisabled width={200} />
-            <Title>Sem tarefas <br /> no momento</Title>
-          </Empty>
-          :
 
 
-          arrayTasks.map((task) => (
-
-            <Card
-              key={task.id}
-              id={task.id}
-              title={task.title}
-              description={task.description}
-              createdAt="Em breve"
-              deleteTask={handleDeleteTask}
-
-            />
-          ))
-
-
-
-
-        }
+        <Tasks tasks={arrayTasks} handleDeleteTask={handleDeleteTask} />
 
 
       </Main>
-      <Modal
-        handleCreateTask={handleCreateTask}
-        task={task}
-        setTask={setTask}
-        referencie={linkRef}
-      />
 
     </>
+
   );
-}
+
+};
 
 export default User;

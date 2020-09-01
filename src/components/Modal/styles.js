@@ -13,7 +13,7 @@ export const StyledModal = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  margin:  10rem auto;
+  margin:  20rem auto;
   background:#FDFFF7 ;
   border: 0.2rem solid #52527A;
   z-index: 99999;

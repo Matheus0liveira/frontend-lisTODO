@@ -47,13 +47,12 @@ function Modal({
           <FiAlignJustify />
 
           <Input
-
             type="text"
             placeholder="Descrição"
             value={task.description}
             setInputValue={(value) => setTask({ ...task, description: value })}
-
           />
+
         </WrapperInput>
 
         <a href="#exitModel" title="Fechar" className="exitModel" ref={referencie} />
