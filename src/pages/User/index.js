@@ -161,10 +161,17 @@ function User() {
     });
 
     const newArrayTasks = arrayTasks.filter(task => task.id !== data.id);
+    const newArrayCheckTasks = arrayTasks.filter(task => task.id === data.id);
 
 
+    const newArrayCheckedTasks = arrayCheckTasks;
+
+    newArrayCheckedTasks.push(newArrayCheckTasks[0]);
+
+    console.log(arrayCheckTasks);
 
     setArrayTasks(newArrayTasks);
+    setArrayCheckTasks(newArrayCheckedTasks);
   };
 
 

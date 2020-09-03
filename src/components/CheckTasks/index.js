@@ -24,7 +24,6 @@ function CheckTask({ checkTasks, handleDeleteTask }) {
   return (
 
     <>
-      {/* <Title>Checked List</Title> */}
       {checkTasks.length === 0
         ?
         <Empty>
