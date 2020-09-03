@@ -168,8 +168,6 @@ function User() {
 
     newArrayCheckedTasks.push(newArrayCheckTasks[0]);
 
-    console.log(arrayCheckTasks);
-
     setArrayTasks(newArrayTasks);
     setArrayCheckTasks(newArrayCheckedTasks);
   };
@@ -200,20 +198,23 @@ function User() {
               <Tasks
                 tasks={arrayTasks}
                 handleDeleteTask={handleDeleteTask}
-                sucessTask={handleSucessTask} />
+                sucessTask={handleSucessTask}
+                disableButtons={false}
+              />
+
             )
 
             :
 
             (
-              <CheckTasks
-                checkTasks={arrayCheckTasks}
-                handleDeleteTask={handleDeleteTask} />
+              <>
+
+                <CheckTasks
+                  checkTasks={arrayCheckTasks}
+                  disableButtons={true} />
+              </>
             )
         }
-
-
-
 
       </Main>
 

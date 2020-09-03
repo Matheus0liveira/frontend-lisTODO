@@ -10,7 +10,7 @@ import Card from '../../components/Card';
 
 
 
-function Tasks({ tasks, handleDeleteTask, sucessTask }) {
+function Tasks({ tasks, handleDeleteTask, sucessTask, disableButtons }) {
 
   const defaultEmpty = {
     loop: true,
@@ -44,6 +44,7 @@ function Tasks({ tasks, handleDeleteTask, sucessTask }) {
           createdAt="Em breve"
           deleteTask={handleDeleteTask}
           sucessTask={sucessTask}
+          showButtons={disableButtons}
 
         />
       ))

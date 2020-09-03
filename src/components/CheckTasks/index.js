@@ -9,7 +9,7 @@ import Card from '../Card';
 
 
 
-function CheckTask({ checkTasks, handleDeleteTask }) {
+function CheckTask({ checkTasks, handleDeleteTask, disableButtons }) {
 
   const defaultEmpty = {
     loop: true,
@@ -24,6 +24,7 @@ function CheckTask({ checkTasks, handleDeleteTask }) {
   return (
 
     <>
+
       {checkTasks.length === 0
         ?
         <Empty>
@@ -33,7 +34,7 @@ function CheckTask({ checkTasks, handleDeleteTask }) {
             width={200}
           />
 
-          <Title>Sem tarefas <br /> no momento</Title>
+          <Title>Sem tarefas completas <br /> no momento</Title>
 
 
         </Empty>
@@ -49,7 +50,7 @@ function CheckTask({ checkTasks, handleDeleteTask }) {
             description={task.description}
             createdAt="Em breve"
             deleteTask={handleDeleteTask}
-
+            showButtons={disableButtons}
           />
         ))
       }
