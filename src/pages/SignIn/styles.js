@@ -96,6 +96,8 @@ export const Button = styled.button`
     border: ${(props) => (props.type ? '0' : '0.2rem solid #52527A')};
 
   }
+
+
 `;
 
 export const MessageError = styled.p`

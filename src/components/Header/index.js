@@ -16,12 +16,10 @@ import {
   Image,
   Title,
   SubmitButton,
-  Main,
   CheckBox
 } from './styles';
 
 import Modal from '../Modal';
-import Tasks from '../Tasks';
 
 function Header(
   {
@@ -30,8 +28,9 @@ function Header(
     setTask,
     task,
     handleMoveToSigninPage,
-    handleDeleteTask,
-    linkCreate
+    handleUpdateMain,
+    linkCreate,
+    typeList
   }) {
 
 
@@ -74,7 +73,7 @@ function Header(
 
             <div>
               <SubmitButton href="#openModel" type="submit"> CRIAR</SubmitButton>
-              <CheckBox> <FiCheckSquare /> </CheckBox>
+              <CheckBox themeButton={typeList} onClick={handleUpdateMain}> <FiCheckSquare /> </CheckBox>
             </div>
           </WrappInfo>
 

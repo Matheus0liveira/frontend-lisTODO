@@ -10,7 +10,7 @@ import Card from '../../components/Card';
 
 
 
-function Tasks({ tasks, handleDeleteTask }) {
+function Tasks({ tasks, handleDeleteTask, sucessTask }) {
 
   const defaultEmpty = {
     loop: true,
@@ -43,6 +43,7 @@ function Tasks({ tasks, handleDeleteTask }) {
           description={task.description}
           createdAt="Em breve"
           deleteTask={handleDeleteTask}
+          sucessTask={sucessTask}
 
         />
       ))

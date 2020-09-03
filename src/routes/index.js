@@ -15,8 +15,9 @@ function Routes() {
       <Switch>
 
         <Route exact path='/signin' component={SigIn} />
-        <Route path='/signup' component={SignUp} />
-        <Route path='/user' component={User} isPrivate />
+        <Route exact path='/signup' component={SignUp} />
+        <Route exact path='/user' component={User} isPrivate />
+
 
       </Switch>
     </BrowserRouter>

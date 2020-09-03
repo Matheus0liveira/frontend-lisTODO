@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+
+import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { v4 } from 'uuid';
 
@@ -7,6 +8,7 @@ import useUser from '../../utils/useUser';
 
 import Header from '../../components/Header';
 import Tasks from '../../components/Tasks';
+import CheckTasks from '../../components/CheckTasks';
 
 
 
@@ -15,6 +17,7 @@ import { Main } from './styles';
 function User() {
 
   const [arrayTasks, setArrayTasks] = useState([]);
+  const [arrayCheckTasks, setArrayCheckTasks] = useState([]);
 
   const [task, setTask] = useState(
     {
@@ -23,8 +26,11 @@ function User() {
       description: '',
     },
   );
+  const [showListCheckTasks, setShowListCheckTasks] = useState(false);
+
 
   const { userValues, setUserValues } = useUser();
+
 
 
   const linkRef = useRef(null);
@@ -37,18 +43,32 @@ function User() {
     }
   }, [task.title, task]);
 
+
+
   useEffect(() => {
     const { token } = userValues;
 
     const auth = ` Bearer ${token}`;
 
     (async () => {
+
       const tasks = await api.get(
         `/users/${userValues.user.id}/tasks`,
         { headers: { Authorization: auth } },
       );
 
-      setArrayTasks(tasks.data);
+
+      const checkTask = await api.get(
+        `/users/${userValues.user.id}/checktasks`,
+        { headers: { Authorization: auth } });
+
+
+      const tasksNoChecked = tasks.data.filter(task => task.check === false);
+      const tasksChecked = checkTask.data.filter(task => task.check === true);
+
+
+      setArrayTasks(tasksNoChecked);
+      setArrayCheckTasks(tasksChecked);
     })();
   }, [userValues]);
 
@@ -102,9 +122,13 @@ function User() {
         token: '',
       },
     );
+
+
     sessionStorage.removeItem('user');
     history.push('/signin');
+
   };
+
 
   const handleDeleteTask = async (id) => {
     const newArraytasks = arrayTasks.filter((task) => id !== task.id);
@@ -123,6 +147,28 @@ function User() {
   };
 
 
+  const handleSucessTask = async (id) => {
+
+
+    const { token } = userValues;
+    const auth = `Bearer ${token}`;
+
+    const { data } = await api.put(`/users/${userValues.user.id}/tasks/${id}`, { check: true }, {
+
+      headers: {
+        Authorization: auth,
+      },
+    });
+
+    const newArrayTasks = arrayTasks.filter(task => task.id !== data.id);
+
+
+
+    setArrayTasks(newArrayTasks);
+  };
+
+
+
   return (
     <>
       <Header
@@ -133,13 +179,33 @@ function User() {
         arrayTasks={arrayTasks}
         handleDeleteTask={handleDeleteTask}
         linkCreate={linkRef}
+        handleUpdateMain={() => setShowListCheckTasks(!showListCheckTasks)}
+        typeList={showListCheckTasks}
       />
 
 
       <Main>
+        {
+          !showListCheckTasks
+            ?
+
+            (
+              <Tasks
+                tasks={arrayTasks}
+                handleDeleteTask={handleDeleteTask}
+                sucessTask={handleSucessTask} />
+            )
+
+            :
+
+            (
+              <CheckTasks
+                checkTasks={arrayCheckTasks}
+                handleDeleteTask={handleDeleteTask} />
+            )
+        }
 
 
-        <Tasks tasks={arrayTasks} handleDeleteTask={handleDeleteTask} />
 
 
       </Main>

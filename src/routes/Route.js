@@ -18,6 +18,8 @@ function RouteWrapper({ redirectTo, isPrivate, component: Component, ...rest }) 
   return <Route {...rest} render={props => <Component {...props} />} />;
 };
 
+
+
 RouteWrapper.propTypes = {
   redirectTo: PropTypes.string,
   isPrivate: PropTypes.bool,

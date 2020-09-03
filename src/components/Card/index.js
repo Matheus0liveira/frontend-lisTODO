@@ -5,7 +5,7 @@ import { FiXSquare, FiCheckSquare } from 'react-icons/fi';
 import { Wrapper, Title } from './styles';
 
 function Card({
-  id, title, description, createdAt, deleteTask,
+  id, title, description, createdAt, deleteTask, sucessTask
 }) {
 
   const newTitle = title.substring(0, 10);
@@ -36,7 +36,7 @@ function Card({
 
         <div>
           <FiXSquare delete="delete" onClick={() => deleteTask(id)} />
-          <FiCheckSquare />
+          <FiCheckSquare onClick={() => sucessTask(id)} />
         </div>
 
       </footer>

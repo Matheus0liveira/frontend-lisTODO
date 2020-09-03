@@ -150,31 +150,32 @@ export const SubmitButton = styled.a`
 export const CheckBox = styled(SubmitButton)`
 
 
-  background: #44CF6C;
+  background:  ${props => props.themeButton ? '#202030' : '#44CF6C'};
   padding: 0 1.5rem;
   margin-right: 0;
   transition: all .5s ease-in-out;
 
 
-  &:hover svg{
-    color:#44CF6C;
-    transform: rotateY(360deg);
-  }
-  &:hover {
-    background:#52527A;
-  }
-
-
   svg{
-    font-size: 4rem;
-    transition: all .8s ease-in-out;
-
+    color: ${props => props.themeButton ? '#44CF6C' : ' #FDFFF7'};
+    transition: all .5s ease-in-out;
+    transform: ${props => props.themeButton && 'rotateY(360deg)'};
   }
+  /* &:hover{
+  background:#52527A;
+  } */
 
-  @media (max-width: 700px){
 
-    padding: 0 2rem;
-  };
+svg{
+  font-size: 4rem;
+  transition: all .8s ease -in -out;
+
+}
+
+@media(max-width: 700px) {
+
+  padding: 0 2rem;
+};
 
 
 `;
