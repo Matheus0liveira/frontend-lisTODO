@@ -62,9 +62,9 @@ function SignIn() {
       <div>
         <Title>
           Bem vindo
-          {' '}
+
           <br />
-          {' '}
+
           de volta!
         </Title>
         <Line />

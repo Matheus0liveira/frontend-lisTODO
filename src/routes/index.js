@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
 
 
 import SigIn from '../pages/SignIn';
@@ -13,7 +13,7 @@ function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-
+        <Route exact path='/' component={SigIn}> <Redirect to='/signin' /></Route>
         <Route exact path='/signin' component={SigIn} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/user' component={User} isPrivate />
