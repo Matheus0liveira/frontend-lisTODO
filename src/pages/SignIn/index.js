@@ -101,7 +101,7 @@ function SignIn() {
           <Buttons>
 
             <Link to="signup">
-              <Button>
+              <Button type="button">
                 CADASTRAR
               </Button>
             </Link>

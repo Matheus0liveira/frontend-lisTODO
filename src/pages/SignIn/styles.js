@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const UserSignIn = styled.div`
 
@@ -79,24 +79,28 @@ export const Buttons = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 100%;
-  padding: ${(props) => (props.type ? '1.4rem 0.5rem' : '1.2rem 0.5rem')} ;
-  font-size: 1.4rem;
-  margin-left: ${(props) => (props.type ? ' 2rem' : 'none')} ;
-  background: ${(props) => (props.type ? '#202030' : 'none')} ;
-  border: ${(props) => (props.type ? '0' : '0.2rem solid #202030')};
-  color: ${(props) => (props.type ? '#DADAE7' : '#52527A ')};
-  font-weight: ${(props) => (props.type ? 'bold' : 'lighter ')};
-  transition: all .5s;
-  cursor: pointer;
+${({ type}) => css`
+    width: 100%;
+    padding: ${type === 'submit' ? '1.4rem 0.5rem' : '1.2rem 0.5rem'} ;
+    font-size: 1.4rem;
+    margin-left: ${type === 'submit' ? ' 2rem' : 'none'} ;
+    background: ${type === 'submit' ? '#202030' : 'none'} ;
+    border: ${type === 'submit' ? '0' : '0.2rem solid #202030'};
+    color: ${type === 'submit' ? '#DADAE7' : '#52527A '};
+    font-weight: ${type === 'submit' ? 'bold' : 'lighter '};
+    transition: all .5s;
+    cursor: pointer;
 
-  &:hover{
-    background: ${(props) => (props.type ? '#52527A' : '#52527A')};
-    color: ${(props) => (props.type ? '#DADAE7' : '#DADAE7 ')};
-    border: ${(props) => (props.type ? '0' : '0.2rem solid #52527A')};
+    &:hover{
+      background: ${type === 'submit' ? '#52527A' : '#52527A'};
+      color: ${type === 'submit' ? '#DADAE7' : '#DADAE7 '};
+      border: ${type === 'submit' ? '0' : '0.2rem solid #52527A'};
 
-  }
+    }
 
+
+
+`}
 
 `;
 
