@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import ProfileImage from '../../assets/images/profile.svg';
+
+
 export const StyledHeader = styled.header`
 
   display: flex;
@@ -63,9 +66,11 @@ export const Wrapper = styled.div`
 
 export const Image = styled.div`
 
-  img{
-    width: 15.5rem;
-  }
+  background: url('${ProfileImage}' );
+  width: 20rem;
+  /* height: 15.5rem; */
+  background-repeat: no-repeat;
+
 
 `;
 

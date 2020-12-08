@@ -16,10 +16,12 @@ import {
   Image,
   Title,
   SubmitButton,
-  CheckBox
+  CheckBox,
+
 } from './styles';
 
 import Modal from '../Modal';
+
 
 function Header(
   {
@@ -31,6 +33,7 @@ function Header(
     handleUpdateMain,
     linkCreate,
     typeList
+
   }) {
 
 
@@ -49,11 +52,7 @@ function Header(
       <StyledHeader>
         <Wrapper left>
           <Image>
-            <img
-              src="https://avatars2.githubusercontent.com/u/58826355?s=460&
-            u=8c805f2a4e708a2f3ff9c6095373bcb622f1dda2&v=4"
-              alt=""
-            />
+
           </Image>
           <WrappInfo>
             <Title>{newName.length >= 10 ? `${newName}...` : newName}</Title>
