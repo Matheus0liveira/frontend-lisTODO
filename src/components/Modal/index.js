@@ -24,7 +24,7 @@ function Modal({
   return (
 
     <StyledModal id="openModel" className="modal">
-      <Close href="#exitModel" title="Fechar" className="exitModel">
+      <Close href="#exitModel" title="Fechar" className="exitModel" ref={referencie}>
         {' '}
         <FiX />
         {' '}
@@ -55,7 +55,6 @@ function Modal({
 
         </WrapperInput>
 
-        <a href="#exitModel" title="Fechar" className="exitModel" ref={referencie} />
 
         <Button type="submit">
           ADICIONAR
