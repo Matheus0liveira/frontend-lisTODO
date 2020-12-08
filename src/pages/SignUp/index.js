@@ -118,7 +118,7 @@ function SignUp() {
 
           <Buttons>
             <Link to="signin">
-              <Button>
+              <Button type="button">
                 LOGIN
               </Button>
             </Link>
